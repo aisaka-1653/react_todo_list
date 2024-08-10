@@ -40,6 +40,8 @@ export default [
       "react-hooks/exhaustive-deps": "warn",
       semi: ["error", "always"],
       quotes: ["error", "double"],
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": ["error"]
     },
     settings: {
       react: {
