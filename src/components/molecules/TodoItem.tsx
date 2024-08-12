@@ -1,7 +1,8 @@
-import { Checkbox, Flex, Input, ListItem, Text } from "@yamada-ui/react";
+import { Checkbox, Flex, Input, ListItem, Text, useDisclosure } from "@yamada-ui/react";
 import { ActionButton } from "../atoms/ActionButton";
 import { Todo } from "../../types/todo";
 import { FC, useState } from "react";
+import { ConfirmDialog } from "../atoms/ConfirmDialog";
 
 type Props = {
   todo: Todo;
@@ -26,10 +27,15 @@ export const TodoItem: FC<Props> = (props) => {
   const { id, title, done } = todo;
 
   const [text, setText] = useState(title);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleSave = () => {
     onUpdate(id, text);
     onEditEnd();
+  };
+
+  const handleDeleteConfirm = () => {
+    onDelete(id);
   };
 
   return (
@@ -57,9 +63,12 @@ export const TodoItem: FC<Props> = (props) => {
             </ActionButton>
           </>
         )}
-        <ActionButton color="pink" onClick={() => onDelete(id)}>
+        <ActionButton color="pink" onClick={onOpen}>
           Delete
         </ActionButton>
+        <ConfirmDialog isOpen={isOpen} onClose={onClose} onConfirm={handleDeleteConfirm} >
+          このタスクを削除してもよろしいですか?
+        </ConfirmDialog>
       </Flex>
     </ListItem>
   );
