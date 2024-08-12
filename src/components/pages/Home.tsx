@@ -29,7 +29,7 @@ export const Home: FC = () => {
             placeholder="なにをしますか?"
             onChange={(e) => setText(e.target.value)}
           />
-          <ActionButton color="purple" onClick={handleAddTodo}>
+          <ActionButton color="primary" onClick={handleAddTodo}>
             Add
           </ActionButton>
         </Flex>
