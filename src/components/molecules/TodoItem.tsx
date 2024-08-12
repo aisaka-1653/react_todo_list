@@ -34,10 +34,6 @@ export const TodoItem: FC<Props> = (props) => {
     onEditEnd();
   };
 
-  const handleDeleteConfirm = () => {
-    onDelete(id);
-  };
-
   return (
     <ListItem>
       <Flex w="full" align="center" gap="md">
@@ -66,7 +62,7 @@ export const TodoItem: FC<Props> = (props) => {
         <ActionButton color="pink" onClick={onOpen}>
           Delete
         </ActionButton>
-        <ConfirmDialog isOpen={isOpen} onClose={onClose} onConfirm={handleDeleteConfirm} >
+        <ConfirmDialog isOpen={isOpen} onClose={onClose} onConfirm={()=> onDelete(id)} >
           このタスクを削除してもよろしいですか?
         </ConfirmDialog>
       </Flex>
