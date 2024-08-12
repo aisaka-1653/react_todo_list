@@ -14,6 +14,7 @@ export const ConfirmDialog: FC<Props> = (props) => {
     <Dialog
       isOpen={isOpen}
       onClose={onClose}
+      placement="top"
       cancel="Cancel"
       onCancel={onClose}
       success="OK"
